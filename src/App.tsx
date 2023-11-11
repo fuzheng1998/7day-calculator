@@ -1,3 +1,7 @@
+/**
+ * Renders a calculator app component.
+ * @returns {JSX.Element} Calculator app component.
+ */
 import { useState } from "react";
 import "./App.css";
 
