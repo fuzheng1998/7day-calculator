@@ -2,9 +2,8 @@
  * Renders a calculator app component.
  * @returns {JSX.Element} Calculator app component.
  */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { log } from "console";
 
 function App() {
   const [input, setInput] = useState<string>("");
@@ -53,15 +52,64 @@ function App() {
       }
       return;
     }
+    // square operations
+    if (value === "x^2") {
+      try {
+        const result = eval(input);
+        const squaredValue = Math.pow(parseFloat(result), 2);
+      setInput(squaredValue.toString());
+      setLastPressedWasCalculation(true);
+      }
+      catch (error) {
+        setInput("Error");
+        setLastPressedWasCalculation(false);
+      }
+    }
+    // square root operations
+    if (value === "sqrt") {
+      try {
+        const result = eval(input);
+        const squareRootValue = Math.sqrt(parseFloat(result));
+        setInput(squareRootValue.toString());
+        setLastPressedWasCalculation(true);
+      }
+      catch (error) {
+        setInput("Error");
+        setLastPressedWasCalculation(false);
+      }
+    }
+    // 1/x operations
+    if (value === "1/x") {
+      try {
+        const result = eval(input);
+        const oneOverValue = 1 / parseFloat(result);
+        setInput(oneOverValue.toString());
+        setLastPressedWasCalculation(true);
+      }
+      catch (error) {
+        setInput("Error");
+        setLastPressedWasCalculation(false);
+      }
+    }
+    // +/- operations
+    if (value === "+-") {
+      try{
+        const result = eval(input);
+        const negativeValue = Math.abs(parseFloat(result)) * -1;
+        setInput(negativeValue.toString());
+        setLastPressedWasCalculation(true);
+      }
+      catch (error) {
+        setInput("Error");
+        setLastPressedWasCalculation(false);
+      }
+    }
     // If the last button pressed was a calculation and a new digit is pressed, start a new calculation
     console.log(lastPressedWasCalculation);
     console.log(isDigit);
     if (lastPressedWasCalculation && isDigit) {
+      console.log("here");
       setInput(value);
-      setLastPressedWasCalculation(false);
-    } else {
-      // Append the value to the input for all other cases
-      setInput(input + value);
       setLastPressedWasCalculation(false);
     }
   };
