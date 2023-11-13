@@ -143,13 +143,13 @@ function App() {
           <button onClick={() => handleButtonClick("7")}>7</button>
           <button onClick={() => handleButtonClick("8")}>8</button>
           <button onClick={() => handleButtonClick("9")}>9</button>
-          <button className="operator" onClick={() => handleButtonClick("+")}>
+          <button className="operator" onClick={() => handleButtonClick("+")} data-testid="add">
             +
           </button>
           <button onClick={() => handleButtonClick("4")}>4</button>
           <button onClick={() => handleButtonClick("5")}>5</button>
           <button onClick={() => handleButtonClick("6")}>6</button>
-          <button className="operator" onClick={() => handleButtonClick("-")}>
+          <button className="operator" onClick={() => handleButtonClick("-")} data-testid="minus">
             -
           </button>
           <button onClick={() => handleButtonClick("1")}>1</button>
@@ -157,23 +157,23 @@ function App() {
             2
           </button>
           <button onClick={() => handleButtonClick("3")}>3</button>
-          <button className="operator" onClick={() => handleButtonClick("*")}>
+          <button className="operator" onClick={() => handleButtonClick("*")} data-testid="multiply">
             *
           </button>
           <button onClick={() => handleButtonClick("0")} data-testid="number0">
             0
           </button>
-          <button onClick={() => handleButtonClick(".")}>.</button>
+          <button onClick={() => handleButtonClick(".")} data-testid="decimal">.</button>
           <button className="equal" onClick={handleCalculate}>
             =
           </button>
-          <button className="operator" onClick={() => handleButtonClick("/")}>
+          <button className="operator" onClick={() => handleButtonClick("/")} data-testid="divide">
             /
           </button>
           <button className="clear" onClick={handleClear}>
             Clear
           </button>
-          <button onClick={() => handleButtonClick("%")}>%</button>
+          <button onClick={() => handleButtonClick("%")} data-testid="percentage">%</button>
           <button onClick={() => handleButtonClick("x^2")}>
             x<sup>2</sup>
           </button>
