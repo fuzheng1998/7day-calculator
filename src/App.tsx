@@ -53,7 +53,7 @@ function App() {
       return;
     }
     // square operations
-    if (value === "x^2") {
+    else if (value === "x^2") {
       try {
         const result = eval(input);
         const squaredValue = Math.pow(parseFloat(result), 2);
@@ -66,7 +66,7 @@ function App() {
       }
     }
     // square root operations
-    if (value === "sqrt") {
+    else if (value === "sqrt") {
       try {
         const result = eval(input);
         const squareRootValue = Math.sqrt(parseFloat(result));
@@ -79,7 +79,7 @@ function App() {
       }
     }
     // 1/x operations
-    if (value === "1/x") {
+    else if (value === "1/x") {
       try {
         const result = eval(input);
         const oneOverValue = 1 / parseFloat(result);
@@ -92,7 +92,7 @@ function App() {
       }
     }
     // +/- operations
-    if (value === "+-") {
+    else if (value === "+/-") {
       try{
         const result = eval(input);
         const negativeValue = Math.abs(parseFloat(result)) * -1;
@@ -105,13 +105,13 @@ function App() {
       }
     }
     // If the last button pressed was a calculation and a new digit is pressed, start a new calculation
-    console.log(lastPressedWasCalculation);
-    console.log(isDigit);
-    if (lastPressedWasCalculation && isDigit) {
-      console.log("here");
-      setInput(value);
-      setLastPressedWasCalculation(false);
-    }
+    // console.log(lastPressedWasCalculation);
+    // console.log(isDigit);
+    // if (lastPressedWasCalculation && isDigit) {
+    //   console.log("here");
+    //   setInput(value);
+    //   setLastPressedWasCalculation(false);
+    // }
   };
 
   // clear the last entry
@@ -177,7 +177,7 @@ function App() {
           <button onClick={() => handleButtonClick("x^2")}>
             x<sup>2</sup>
           </button>
-          <button onClick={() => handleButtonClick("+-")}>+/-</button>
+          <button onClick={() => handleButtonClick("+/-")}>+/-</button>
           <button onClick={() => handleButtonClick("sqrt")}>
             sqrt<sup>x</sup>
           </button>
