@@ -4,15 +4,15 @@
  */
 import { useState } from "react";
 import "./App.css";
+import { evaluate } from 'mathjs';
 
 function App() {
   const [input, setInput] = useState<string>("");
-  const [lastPressedWasCalculation, setLastPressedWasCalculation] =
+  const [, setLastPressedWasCalculation] =
     useState(false);
 
   const handleButtonClick = (value: string) => {
     const operators = ["+", "-", "*", "/"];
-    const isDigit = /^[0-9]$/.test(value);
     // Check if the last character is an operator
     const lastCharIsOperator = operators.includes(input.slice(-1));
 
@@ -27,7 +27,7 @@ function App() {
 
     // Handling decimal point logic
     if (value === ".") {
-      const parts = input.split(/[\+\-\*\/]/); // Split input by operators
+      const parts = input.split(/[+\-*/]/); // Split input by operators
       const lastNumber = parts.pop(); // Get the last number entered
 
       if (lastNumber && lastNumber.includes(".")) {
@@ -42,7 +42,7 @@ function App() {
     // percentage operations
     if (value === "%") {
       try {
-        const result = eval(input);
+        const result = evaluate(input);
         const percentageResult = result / 100;
         setInput(percentageResult.toString());
         setLastPressedWasCalculation(true);
@@ -55,7 +55,7 @@ function App() {
     // square operations
     else if (value === "x^2") {
       try {
-        const result = eval(input);
+        const result = evaluate(input);
         const squaredValue = Math.pow(parseFloat(result), 2);
       setInput(squaredValue.toString());
       setLastPressedWasCalculation(true);
@@ -68,7 +68,7 @@ function App() {
     // square root operations
     else if (value === "sqrt") {
       try {
-        const result = eval(input);
+        const result = evaluate(input);
         const squareRootValue = Math.sqrt(parseFloat(result));
         setInput(squareRootValue.toString());
         setLastPressedWasCalculation(true);
@@ -81,7 +81,7 @@ function App() {
     // 1/x operations
     else if (value === "1/x") {
       try {
-        const result = eval(input);
+        const result = evaluate(input);
         const oneOverValue = 1 / parseFloat(result);
         setInput(oneOverValue.toString());
         setLastPressedWasCalculation(true);
@@ -94,7 +94,7 @@ function App() {
     // +/- operations
     else if (value === "+/-") {
       try{
-        const result = eval(input);
+        const result = evaluate(input);
         const negativeValue = Math.abs(parseFloat(result)) * -1;
         setInput(negativeValue.toString());
         setLastPressedWasCalculation(true);
@@ -121,7 +121,7 @@ function App() {
 
   const handleCalculate = () => {
     try {
-      setInput(eval(input).toString());
+      setInput(evaluate(input).toString());
       console.log(input);
     } catch (error) {
       setInput("Error");

@@ -111,7 +111,7 @@ describe("test divide by zero", () => {
   }
   );
 });
-test("test percentage", () => {
+test("percentage", () => {
   render(<App />);
   // 5% should be 0.05 displayed
   const button5 = screen.getByText("5");
