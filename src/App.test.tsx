@@ -111,3 +111,117 @@ describe("test divide by zero", () => {
   }
   );
 });
+test("test percentage", () => {
+  render(<App />);
+  // 5% should be 0.05 displayed
+  const button5 = screen.getByText("5");
+  fireEvent.click(button5);
+  const buttonPercentage = screen.getByText("%");
+  fireEvent.click(buttonPercentage);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("0.05");
+}
+);
+test("sqrt", () => {
+  render(<App />);
+  // sqrt(4) should be 2 displayed
+  const button4 = screen.getByText("4");
+  fireEvent.click(button4);
+  const buttonSqrt = screen.getByText("sqrt");
+  fireEvent.click(buttonSqrt);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("2");
+}
+);
+test("x^2", () => {
+  render(<App />);
+  // 2^2 should be 4 displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonSquare = screen.getByTestId("x^2");
+  fireEvent.click(buttonSquare);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("4");
+}
+);
+test("clear", () => {
+  render(<App />);
+  // 2^2 should be 4 displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonSquare = screen.getByTestId("x^2");
+  fireEvent.click(buttonSquare);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("4");
+  const buttonClear = screen.getByText("Clear");
+  fireEvent.click(buttonClear);
+  expect(display.textContent).toBe("");
+}
+);
+test("clear entry", () => {
+  render(<App />);
+  // 2^2 should be 4 displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonSquare = screen.getByTestId("x^2");
+  fireEvent.click(buttonSquare);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("4");
+  const buttonClear = screen.getByText("CE");
+  fireEvent.click(buttonClear);
+  expect(display.textContent).toBe("");
+}
+);
+test("negative number", () => {
+  render(<App />);
+  // -2 should be -2 displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonNegative = screen.getByText("+/-");
+  fireEvent.click(buttonNegative);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("-2");
+}
+);
+// test sqrt of negative number
+test("sqrt of negative number", () => {
+  render(<App />);
+  // sqrt(-2) should be NaN displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonNegative = screen.getByText("+/-");
+  fireEvent.click(buttonNegative);
+  const buttonSqrt = screen.getByText("sqrt");
+  fireEvent.click(buttonSqrt);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("NaN");
+}
+);
+// test 1/x of negative number
+test("1/x of negative number", () => {
+  render(<App />);
+  // 1/-2 should be -0.5 displayed
+  const button2 = screen.getByTestId("number2");
+  fireEvent.click(button2);
+  const buttonNegative = screen.getByText("+/-");
+  fireEvent.click(buttonNegative);
+  const button1Divide = screen.getByText("1/x");
+  fireEvent.click(button1Divide);
+  const buttonEqual = screen.getByText("=");
+  fireEvent.click(buttonEqual);
+  const display = screen.getByTestId("display");
+  expect(display.textContent).toBe("-0.5");
+}
+);

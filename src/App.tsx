@@ -174,7 +174,7 @@ function App() {
             Clear
           </button>
           <button onClick={() => handleButtonClick("%")} data-testid="percentage">%</button>
-          <button onClick={() => handleButtonClick("x^2")}>
+          <button onClick={() => handleButtonClick("x^2")} data-testid="x^2">
             x<sup>2</sup>
           </button>
           <button onClick={() => handleButtonClick("+/-")}>+/-</button>
