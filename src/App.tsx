@@ -9,6 +9,11 @@ function App() {
   const [input, setInput] = useState<string>("");
 
   const handleButtonClick = (value: string) => {
+    // if value is number or decimal, append to input, decimal can only be used once
+    if (value === "." && input.includes(".")) {
+      alert("Decimal can only be used once");
+      return;
+    }
     setInput(input + value);
     // if value is percentage, divide by 100
     if (value === "%") {
